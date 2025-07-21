@@ -40,4 +40,15 @@ export class Todos implements OnInit{
   ngOnInit(): void {
     // Initialization logic can go here if needed
   }
+
+  deleteItem(todo: Todo): void {
+    console.log(`Deleted todo: ${todo}`);
+    const index = this.todos.indexOf(todo);
+    if (index > -1) {
+      this.todos.splice(index, 1);
+      console.log(`Todo with sno ${todo.sno} deleted successfully.`);
+    } else {
+      console.log(`Todo with sno ${todo.sno} not found.`);
+    }
+  }
 }
