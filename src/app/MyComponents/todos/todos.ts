@@ -11,30 +11,21 @@ import { Todo } from "../../models/Todo";
 export class Todos implements OnInit{
   //public todos: { sno: number; title: string; desc: string; active: boolean }[];
 
-  public todos: Todo[];
+  todos: Todo[];
+  localItem: string | null;
 
   constructor() {
-      
-      this.todos = [
-          {
-              sno: 1,
-              title: "Cleaning",
-              desc: "Cleaning of the house",
-              active: true
-          },
-          {
-              sno: 2,
-              title: "Lawn Mowing",
-              desc: "Mowing the grass in the lawn",
-              active: true
-          },
-          {
-              sno: 3,
-              title: "Grocery Shopping",
-              desc: "Grocery shopping for the week",
-              active: true
-          }
-      ];
+      if (typeof window !== 'undefined' && window.localStorage) {
+        this.localItem = localStorage.getItem("todos");
+        if (this.localItem === null) {
+            this.todos = [];
+        } else {
+            this.todos = JSON.parse(this.localItem);
+        }
+    } else {
+        this.localItem = null;
+        this.todos = [];
+    }
   }
 
   ngOnInit(): void {
@@ -50,11 +41,17 @@ export class Todos implements OnInit{
     } else {
       console.log(`Todo with sno ${todo.sno} not found.`);
     }
-  }
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+      }
+    }
 
   addToDo(todo: Todo) {
     console.log(`Todo added: ${todo}`);
     this.todos.push(todo);
     console.log(`Todo with sno ${todo.sno} added successfully.`);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    }
   }
 }
