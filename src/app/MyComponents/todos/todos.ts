@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Todo } from "../../models/Todo.model";
+
 
 @Component({
   selector: 'app-todos',
@@ -6,6 +8,37 @@ import { Component } from '@angular/core';
   templateUrl: './todos.html',
   styleUrl: './todos.css'
 })
-export class Todos {
+export class Todos implements OnInit{
+  //public todos: { sno: number; title: string; desc: string; active: boolean }[];
 
+  public todos: Todo[];
+
+  constructor() {
+    // Initialize the todos array with some sample data
+      
+      this.todos = [
+          {
+              sno: 1,
+              title: "Cleaning",
+              desc: "Cleaning of the house",
+              active: true
+          },
+          {
+              sno: 2,
+              title: "Lawn Mowing",
+              desc: "Mowing the grass in the lawn",
+              active: true
+          },
+          {
+              sno: 3,
+              title: "Grocery Shopping",
+              desc: "Grocery shopping for the week",
+              active: true
+          }
+      ];
+  }
+
+  ngOnInit(): void {
+    // Initialization logic can go here if needed
+  }
 }

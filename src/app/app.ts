@@ -11,8 +11,8 @@ export class App {
   head_title = "Angular project";
 
   constructor(){
-    setTimeout(() => {
-      this.head_title = "Title changed";
-    }, 2000);
+    // setTimeout(() => {
+    //   this.head_title = "Title changed";
+    // }, 2000);
   }
 }
