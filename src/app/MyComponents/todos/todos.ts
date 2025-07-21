@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from "../../models/Todo.model";
+import { Todo } from "../../models/Todo";
 
 
 @Component({
@@ -14,7 +14,6 @@ export class Todos implements OnInit{
   public todos: Todo[];
 
   constructor() {
-    // Initialize the todos array with some sample data
       
       this.todos = [
           {

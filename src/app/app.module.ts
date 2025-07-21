@@ -9,13 +9,13 @@ import { TodoItem } from './MyComponents/todo-item/todo-item';
 @NgModule({
   declarations: [
     App,
-    Todos,
-    TodoItem
+    Todos
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    TodoItem
+],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
