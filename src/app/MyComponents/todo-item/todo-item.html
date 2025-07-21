@@ -1,5 +1,5 @@
-<h3>{{ todo.title }}</h3>
+<h5>{{ todo.title }}</h5>
 <p>{{ todo.desc }}</p>
 <p>Status: {{ todo.active ? 'Active' : 'Completed' }}</p>
 <!-- button class="btn btn-primary">Toggle Status</button -->
-<button class="btn btn-danger" (click)="deleteToDo(todo)">Delete</button>
+<button class="btn btn-sm btn-danger" (click)="deleteToDo(todo)">Delete</button>

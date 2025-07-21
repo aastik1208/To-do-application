@@ -51,4 +51,10 @@ export class Todos implements OnInit{
       console.log(`Todo with sno ${todo.sno} not found.`);
     }
   }
+
+  addToDo(todo: Todo) {
+    console.log(`Todo added: ${todo}`);
+    this.todos.push(todo);
+    console.log(`Todo with sno ${todo.sno} added successfully.`);
+  }
 }
