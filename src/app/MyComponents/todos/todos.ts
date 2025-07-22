@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from "../../models/Todo";
 
 
@@ -10,7 +10,6 @@ import { Todo } from "../../models/Todo";
 })
 export class Todos implements OnInit{
   //public todos: { sno: number; title: string; desc: string; active: boolean }[];
-
   todos: Todo[];
   localItem: string | null;
 
@@ -50,6 +49,14 @@ export class Todos implements OnInit{
     console.log(`Todo added: ${todo}`);
     this.todos.push(todo);
     console.log(`Todo with sno ${todo.sno} added successfully.`);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    }
+  }
+
+  toggleItem(todo: Todo) {
+    todo.active = !todo.active;
+    console.log(`Status toggled for todo with sno ${todo.sno}. New status: ${todo.active ? 'Active' : 'Completed'}`);
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('todos', JSON.stringify(this.todos));
     }

@@ -1,10 +1,11 @@
-<app-add-to-do (todoAdd)="addToDo($event)"></app-add-to-do>
-<h1 class="text-center">To Do List</h1>
+<app-add-to-do (todoAdd)="addToDo($event)" ></app-add-to-do>
 <div *ngIf="todos.length === 0" class="text-center">
     <h6>No To Do's to display</h6>
 </div>
-<div *ngIf="todos.length > 0" class="text-center">
+<div *ngIf="todos.length > 0" class="border p-3 mb-3">
+    <h5 class="text-center">Your To Do's</h5>
 <hr>
-<div *ngFor="let todo of todos">
-    <app-todo-item [todo]="todo" (todoDeleted)="deleteItem($event)"></app-todo-item>
+<div *ngFor="let todo of todos; index as i">
+    <app-todo-item [todo]="todo" [i]="i" (todoDeleted)="deleteItem($event)" (todoCheckbox)="toggleItem($event)"></app-todo-item>
+    <hr>
 </div>

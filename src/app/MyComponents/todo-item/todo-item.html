@@ -1,5 +1,11 @@
-<h5>{{ todo.title }}</h5>
-<p>{{ todo.desc }}</p>
-<p>Status: {{ todo.active ? 'Active' : 'Completed' }}</p>
-<!-- button class="btn btn-primary">Toggle Status</button -->
-<button class="btn btn-sm btn-danger" (click)="deleteToDo(todo)">Delete</button>
+<div class="my-3">
+    <h5 [ngClass]="{'strike': !todo.active}">{{ todo.title }}</h5>
+    <p>{{ todo.desc }}</p>
+    <p>Status: {{ todo.active ? 'Active' : 'Completed' }}</p>
+    <div class="">
+        <input type="checkbox" class="form-check-input mx-1" id="exampleCheck1" (click)="toggleStatus(todo)" [checked]="!todo.active">
+        <label class="form-check-label" for="exampleCheck1{{i}}" > Mark as done</label>
+    </div>
+    <!-- button class="btn btn-primary">Toggle Status</button -->
+    <button class="btn btn-sm btn-danger" (click)="deleteToDo(todo)">Delete</button>
+</div>
